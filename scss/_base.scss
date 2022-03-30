@@ -1,0 +1,84 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    background-color: $very-dark-blue;
+    color: $pale-blue;
+}
+
+main {
+    @media screen and (min-width: 900px) {
+        @media screen and (min-height: 900px) {
+            @include flexCenter(column);
+            height: 95vh;
+        }
+    }
+
+    @media screen and (min-width: 1150px) {
+        @media screen and (min-height: 650px) {
+            @include flexCenter(column);
+            height: 95vh;
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: white;
+    margin: 0;
+}
+
+h1,
+h3 {
+    font-weight: 300;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.box {
+    border-radius: 1rem;
+}
+
+.work {
+    @include statsContainer($light-red-work, url(./../images/icon-work.svg));
+}
+
+.play {
+    @include statsContainer($soft-blue, url(./../images/icon-play.svg));
+}
+
+.study {
+    @include statsContainer($light-red-study, url(./../images/icon-study.svg));
+}
+
+.exercise {
+    @include statsContainer($lime-green, url(./../images/icon-exercise.svg));
+}
+
+.social {
+    @include statsContainer($violet, url(./../images/icon-social.svg));
+}
+
+.self-care {
+    @include statsContainer($soft-orange, url(./../images/icon-self-care.svg));
+}

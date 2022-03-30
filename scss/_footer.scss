@@ -1,0 +1,15 @@
+footer {
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+footer a {
+    color: $desaturated-blue;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+        color: white;
+    }
+}

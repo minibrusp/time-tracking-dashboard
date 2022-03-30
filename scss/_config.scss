@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@mixin flexCenter($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexCustom($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin transparentButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@mixin statsContainer($color, $url) {
+    background-color: $color;
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-position: top -10px right 20px;
+}
