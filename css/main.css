@@ -290,6 +290,8 @@ ul {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  -webkit-transition: color 0.5s ease;
+  transition: color 0.5s ease;
 }
 
 .time-tracker__nav__list__item button:hover {
@@ -299,6 +301,11 @@ ul {
 .time-tracker__nav__list__item button.active {
   color: white;
   cursor: default;
+}
+
+.time-tracker__nav__list__item button:disabled {
+  cursor: wait;
+  color: slategrey;
 }
 
 .time-tracker__stats {
@@ -316,6 +323,10 @@ ul {
 .time-tracker__stats__container:hover {
   background-color: #6f76c8;
   cursor: pointer;
+}
+
+.time-tracker__stats__container.--flipping {
+  background-color: #1c1f4a;
 }
 
 @media screen and (min-width: 750px) {

@@ -9,8 +9,8 @@ const loadSessionData = timeFrameState => {
    let sessionDatas = getSessionItem('allData')
    sessionDatas.map(data => {
       let title = data.title.toLowerCase().replace(' ', '-')
-
-      onLoadRender(title, data.title, data.timeframes[timeFrameState].current, timeFrameState.replace('ly', ''), data.timeframes[timeFrameState].previous)
+      let unit = timeFrameState == 'daily' ? timeFrameState.replace('il', '') : timeFrameState.replace('ly', '')
+      onLoadRender(title, data.title, data.timeframes[timeFrameState].current, unit, data.timeframes[timeFrameState].previous)
    })
 }
 

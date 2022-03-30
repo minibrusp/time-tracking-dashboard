@@ -1,5 +1,6 @@
 import { timeTracker } from './variables.js'
 import { getSessionItem } from './sessionStorage.js'
+import { numberAnimation, wordAnimation } from './animation.js'
 
 export const onLoadRender = (className, title, current, unit, prev) => {
    let StatsTemplate = `
@@ -12,8 +13,8 @@ export const onLoadRender = (className, title, current, unit, prev) => {
                   </button>
                   </div>
                   <div class="time-tracker__stats__container__bot">
-                  <h3>${current}hrs</h3>
-                  <p>Last ${unit} - ${prev}hrs</p>
+                  <h3><span>${current}</span>hrs</h3>
+                  <p>Last <span>${unit}</span> - <span>${prev}</span>hrs</p>
                   </div>
                </div>
             </section>`
@@ -23,15 +24,18 @@ export const onLoadRender = (className, title, current, unit, prev) => {
 
 export const navEventRender = timeFrameState => {
    getSessionItem('allData').map(data => {
-      let currentHeader = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container__bot h3`)
-      let previousPara = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container__bot p`)
 
-      currentHeader.textContent = `${data.timeframes[timeFrameState].current}hrs`
+      let currentHeader = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container__bot h3 span`)
+      numberAnimation(currentHeader, data.timeframes[timeFrameState].current)
+
+      let unit = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container__bot p span`)
+      let prev = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container__bot p span + span`)
 
       timeFrameState === 'daily'
-         ? previousPara.textContent = `Last ${timeFrameState.replace('il', '')} - ${data.timeframes[timeFrameState].previous}hrs`
-         : previousPara.textContent = `Last ${timeFrameState.replace('ly', '')} - ${data.timeframes[timeFrameState].previous}hrs`
+         ? wordAnimation(unit, timeFrameState.replace('il', ''))
+         : wordAnimation(unit, timeFrameState.replace('ly', ''))
 
+      numberAnimation(prev, data.timeframes[timeFrameState].previous)
 
    })
 }
@@ -48,5 +52,15 @@ export const setButtonState = (buttons, timeFrameState) => {
       if (button.value == timeFrameState) {
          button.classList.add('active')
       }
+   })
+}
+
+export const disableNavButtons = (buttons) => {
+   buttons.forEach(button => {
+      button.disabled = true
+
+      setTimeout(() => {
+         button.disabled = false
+      }, 2500)
    })
 }
