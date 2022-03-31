@@ -22,7 +22,7 @@ navButtons.forEach(button => {
       navEventRender(getSessionItem('timeFrameState'))
 
       getSessionItem('allData').map(data => {
-         console.log("COunt")
+
          let statsCard = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container`)
          flipCardAnimation(statsCard)
       })
@@ -48,6 +48,8 @@ statsCards.forEach(card => {
          let prev = card.querySelector(`p span + span`)
          numberAnimationZero(prev)
       }, 500)
+
+      disableNavButtons(navButtons)
 
 
    })

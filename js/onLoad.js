@@ -7,7 +7,8 @@ import { navButtons } from './variables.js'
 
 const loadSessionData = timeFrameState => {
    let sessionDatas = getSessionItem('allData')
-   sessionDatas.map(data => {
+
+   sessionDatas.forEach(data => {
       let title = data.title.toLowerCase().replace(' ', '-')
       let unit = timeFrameState == 'daily' ? timeFrameState.replace('il', '') : timeFrameState.replace('ly', '')
       onLoadRender(title, data.title, data.timeframes[timeFrameState].current, unit, data.timeframes[timeFrameState].previous)

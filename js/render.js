@@ -23,7 +23,7 @@ export const onLoadRender = (className, title, current, unit, prev) => {
 }
 
 export const navEventRender = timeFrameState => {
-   getSessionItem('allData').map(data => {
+   getSessionItem('allData').forEach(data => {
 
       let currentHeader = document.querySelector(`.${data.title.toLowerCase().replace(' ', '-')} .time-tracker__stats__container__bot h3 span`)
       numberAnimation(currentHeader, data.timeframes[timeFrameState].current)
